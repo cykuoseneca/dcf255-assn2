@@ -6,7 +6,6 @@ function setMenu(type)
 {
     if (typeof type !== "number") return;
 
-    let home = document.getElementById("menu-home");
     let intro = document.getElementById("menu-intro");
     let history = document.getElementById("menu-history");
     let mechanism = document.getElementById("menu-mechanism");
@@ -15,7 +14,6 @@ function setMenu(type)
   
     switch (type) {
       case 0:
-        activate(home);
         deactivate(intro);
         deactivate(history);
         deactivate(mechanism);
@@ -23,7 +21,6 @@ function setMenu(type)
         deactivate(about);
         break;
       case 1:
-        deactivate(home);
         activate(intro);
         deactivate(history);
         deactivate(mechanism);
@@ -31,7 +28,6 @@ function setMenu(type)
         deactivate(about);
         break;
       case 2:
-        deactivate(home);
         deactivate(intro);
         activate(history);
         deactivate(mechanism);
@@ -39,7 +35,6 @@ function setMenu(type)
         deactivate(about);
         break;
       case 3:
-        deactivate(home);
         deactivate(intro);
         deactivate(history);
         activate(mechanism);
@@ -47,7 +42,6 @@ function setMenu(type)
         deactivate(about);
         break;
       case 4:
-        deactivate(home);
         deactivate(intro);
         deactivate(history);
         deactivate(mechanism);
@@ -55,7 +49,6 @@ function setMenu(type)
         deactivate(about);
         break;
       case 5:
-        deactivate(home);
         deactivate(intro);
         deactivate(history);
         deactivate(mechanism);

@@ -13,10 +13,6 @@ func init() {
 	temp = template.Must(template.ParseGlob("static/*.html"))
 }
 
-func RunIndex(w http.ResponseWriter, r *http.Request) {
-	temp.ExecuteTemplate(w, "index.html", nil)
-}
-
 func RunIntro(w http.ResponseWriter, r *http.Request) {
 	temp.ExecuteTemplate(w, "intro.html", nil)
 }
@@ -40,8 +36,7 @@ func RunAbout(w http.ResponseWriter, r *http.Request) {
 func main() {
 	fs := http.FileServer(http.Dir("assets"))
 	http.Handle("/assets/", http.StripPrefix("/assets", fs))
-	http.HandleFunc("/", RunIndex)
-	http.HandleFunc("/intro", RunIntro)
+	http.HandleFunc("/", RunIntro)
 	http.HandleFunc("/history", RunHistory)
 	http.HandleFunc("/mechanism", RunMechanism)
 	http.HandleFunc("/reference", RunRef)

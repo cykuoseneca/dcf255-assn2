@@ -1,48 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>FTP History</title>
-    <meta charset="utf-8" />
 
-    <!-- CSS only -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-      crossorigin="anonymous"
-    />
-    <link id="theme" rel="stylesheet" type="text/css" href="assets/my/css/style.css" />
-  </head>
+<head>
+  <title>FTP History</title>
+  <meta charset="utf-8" />
 
-  <body>
-    <div class="menu">
-        <nav>
-          <ul>
-            <li>
-              <a id="menu-home" href="/">Home</a>
-            </li>
-            <li>
-              <a id="menu-intro" href="/intro">Introduction</a>
-            </li>
-            <li>
-              <a id="menu-history" class="active" href="/history">History</a>
-            </li>
-            <li>
-              <a id="menu-mechanism" href="/mechanism">Mechanism</a>
-            </li>
-            <li>
-              <a id="menu-reference" href="/reference">Reference</a>
-            </li>
-            <div class="about">
-              <li>
-                <a id="menu-about" class="about" href="/about">About Us</a>
-              </li>
-          </div>
-        </ul>
-      </nav>
-    </div>
-    <div class="content">
-      <h1>FTP History</h1>
-    </div>
-  </body>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+  <link id="theme" rel="stylesheet" type="text/css" href="assets/my/css/style.css" />
+  <script src="assets/my/js/script.js"></script>
+</head>
+
+<body>
+  <div class="menu">
+    <nav>
+      <ul>
+        <li>
+          <a id="menu-intro" href="/">Introduction</a>
+        </li>
+        <li>
+          <a id="menu-history" class="active" href="/history">History</a>
+        </li>
+        <li>
+          <a id="menu-mechanism" href="/mechanism">Mechanism</a>
+        </li>
+        <li>
+          <a id="menu-reference" href="/reference">Reference</a>
+        </li>
+        <div class="about">
+          <li>
+            <a id="menu-about" class="about" href="/about">About Us</a>
+          </li>
+        </div>
+      </ul>
+    </nav>
+  </div>
+  <div class="content">
+    <h1>FTP History</h1>
+    <p>
+      The development of FTP has been gradual throughout time. The first File
+      Transfer Protocol specification was authored by Abhay Bhushan and
+      published on April 16, 1971, as RFC 114. Up until 1980, NCP, the
+      predecessor of TCP/IP, supported FTP. Later, it was replaced by the
+      TCP/IP version of the protocol, RFC 765 (June 1980), and the current
+      standard, RFC 959 (October 1985). RFC 1579 (February 1994), which
+      introduces Firewall-Friendly FTP (passive mode), RFC 2228 (June 1997),
+      which calls for security improvements, and RFC 2428 (September 1998),
+      which adds support for IPv6 and specifies a new type of passive mode,
+      are just a few of the proposed measures that amend RFC 959.
+    </p>
+    <p>
+      The latest FTP specification intends to improve various protocol
+      elements, introduce a few additional optional commands, and correct a
+      few minor documentation errors. The following new optional commands are
+      particularly included in this standard version: Structure Mount, Store
+      Unique, Remove Directory, Make Directory, Print Directory, and System
+      are all abbreviations for the letters SMNT, STOU, MKD, PWD, and SYST.
+      Change to Parent Directory is the acronym for this. It is compatible
+      with the older version of this standard. Software created by it should
+      automatically satisfy the previous criterion.
+    </p>
+  </div>
+</body>
+
 </html>

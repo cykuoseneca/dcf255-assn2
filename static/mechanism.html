@@ -1,53 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>FTP Mechanism</title>
-    <meta charset="utf-8" />
 
-    <!-- CSS only -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-      crossorigin="anonymous"
-    />
-    <link
-      id="theme"
-      rel="stylesheet"
-      type="text/css"
-      href="assets/my/css/style.css"
-    />
-  </head>
+<head>
+  <title>FTP Mechanism</title>
+  <meta charset="utf-8" />
 
-  <body>
-    <div class="menu">
-        <nav>
-          <ul>
-            <li>
-              <a id="menu-home" href="/">Home</a>
-            </li>
-            <li>
-              <a id="menu-intro" href="/intro">Introduction</a>
-            </li>
-            <li>
-              <a id="menu-history" href="/history">History</a>
-            </li>
-            <li>
-              <a id="menu-mechanism" class="active" href="/mechanism">Mechanism</a>
-            </li>
-            <li>
-              <a id="menu-reference" href="/reference">Reference</a>
-            </li>
-            <div class="about">
-              <li>
-                <a id="menu-about" class="about" href="/about">About Us</a>
-              </li>
-          </div>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+  <link id="theme" rel="stylesheet" type="text/css" href="assets/my/css/style.css" />
+  <script src="assets/my/js/script.js"></script>
+</head>
+
+<body>
+  <div class="menu">
+    <nav>
+      <ul>
+        <li>
+          <a id="menu-intro" href="/">Introduction</a>
+        </li>
+        <li>
+          <a id="menu-history" href="/history">History</a>
+        </li>
+        <li>
+          <a id="menu-mechanism" class="active" href="/mechanism">Mechanism</a>
+        </li>
+        <li>
+          <a id="menu-reference" href="/reference">Reference</a>
+        </li>
+        <div class="about">
+          <li>
+            <a id="menu-about" class="about" href="/about">About Us</a>
+          </li>
+        </div>
+      </ul>
+    </nav>
+  </div>
+  <div class="content">
+    <h1>How File Transfer Protocol (FTP) Works</h1>
+    <div>
+
+      <h2>Operation Principle</h2>
+      <p>
+        The operating principle of FTP is relatively simple, with two
+        connections between the server providing FTP services and the client
+        connecting to the server. Port 21 is for transmitting and receiving
+        signals for controlling data transmission, and port 20 is for
+        transmitting an actual file. A network port refers to a path through
+        which data travels through a network. Therefore, when the user accesses
+        the FTP server, the information of the account or the file transfer
+        command is performed on the data control connection (port 21), and the
+        actual file transmission and reception are performed through the data
+        transfer connection (port 20). Clients connected to the FTP server
+        remain connected by sending constant messages to and from the FTP server
+        for continuous transmission and reception of multiple files.
+      </p>
+    </div>
+    <div>
+
+      <h2>Connection Modes</h2>
+      <p>
+        FTP supports two modes: passive mode and active mode in transferring
+        data or files.
+      </p>
+      <h3>Active Mode</h3>
+      <div>
+        <img src="https://kikobeats.github.io/server-sandbox/assets/ftp-active.png" height="100%" width="70%"
+          alt="FTP Active Mode" />
+      </div>
+      <div>
+        <label for="active-mode"><i><small>Fig 1. Active Mode</small></i></label>
+        <p></p>
+      </div>
+      <div>
+        <p>
+          The client attempts to connect to port 21 of the FTP server and
+          informs the server of the second port to be used. The server responds
+          with ACK (acknowledge), and port 20 on the server attempts to connect
+          to the second port that the client informed. Finally, the client
+          responds with an ACK.
+        </p>
+      </div>
+      <h3>Passive Mode</h3>
+      <div>
+        <img src="https://kikobeats.github.io/server-sandbox/assets/ftp-passive.png" height="100%" width="70%"
+          alt="FTP Passive Mode" />
+      </div>
+      <div>
+        <label for="passive-mode"><i><small>Fig 2. Passive Mode</small></i></label>
+        <p></p>
+      </div>
+      <div>
+        <p>
+          The passive mode was created to solve the problem of the active mode.
+          In active mode, when a server attempts to connect to a client, the
+          connection may fail or an error may occur due to a firewall or router
+          on the client's PC. First, when the client attempts to access port 21,
+          the server tells the server the second port to use. The client opens
+          another port and attempts to connect to the port that the server has
+          informed, and the server responds with an ACK. In passive mode, port
+          20 is not used, but any port between 1024 and 65535.
+        </p>
+      </div>
+    </div>
+    <div>
+      <h2>Request and Response</h3>
+        <p>
+          The FTP protocol is a text-based protocol that uses request and
+          response structures similar to other Internet protocols such as HTTP
+          and SMTP.
+        </p>
+        <p>First, it identifies the default request and response flows and begins to define this protocol. A normal FTP
+          session begins with the client initiating a TCP connection to the FTP server. The FTP server typically
+          identifies the server and sends a connection greeting to the client indicating that the client can continue
+          sending commands. From this point on, the protocol is a series of requests from the client and a response from
+          the server.</p>
+    </div>
+    <div>
+      <h2>File Operation</h2>
+      <p>There are three main types of operations in FTP:</p>
+      <ul>
+        <li><b>File download from FTP Server to FTP Client</b>: Also known as retrieving a file. Internally, use the
+          <b>RETR</b> command to retrieve the file.
+        </li>
+        <li><b>File upload from FTP Client to FTP Server</b>: Also known as File Storage. Internally,
+          <b>STOR</b> commands are used to store files.
+        </li>
+        <li><b>Remote Directory Listing</b>: Listing the contents of the remote directory. Internally, the
+          <b>LIST</b> command is used to list the contents of the remote directory.
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h1>Data Connection</h1>
+      <div>
+        <h2>File Structure</h2>
+        <p>The FTP STRU command is used to set the file transfer structure. The following is a different file structure:
+        </p>
+        <ul>
+          <li>
+            <b>F (FILE structure)</b>: FILE structure is a continuous stream of bytes.
+          </li>
+          <li>
+            <b>R (RECORD structure)</b>: A file separated by a fixed or variable length record.
+          </li>
         </ul>
-      </nav>
+      </div>
+      <div>
+        <h2>Data transfer modes</h2>
+        <p>The following are various FTP transfer modes:</p>
+        <ul>
+          <li>
+            <b>Stream mode</b>: In this mode, the data is sent in a continuous stream of unstructured bytes. The
+            transmitter starts sending data to the recipient over a TCP data connection. Message formats with separate
+            header fields are not used, which is quite different from the way many other protocols send information in
+            discrete chunks. It strongly relies on TCP's data streaming and reliable transport services. Because there
+            is no header structure, the end of the file is displayed when the transfer device closes the data
+            connection.
+          </li>
+          <li>
+            <b>Block mode</b>: This is a more "traditional" data transfer mode in which data is divided into blocks of
+            data and encapsulated into individual FTP blocks or records. Each record has a three-byte header that
+            represents the length and contains information about the data blocks being sent. Special algorithms are used
+            to track transmitted data, detect interrupted transmissions, and restart them.
+          </li>
+          <li>
+            <b>Compression mode</b>: Transmission mode uses a relatively simple compression technique called run-length
+            encoding to detect repeated patterns of transmitted data so that the entire message occupies fewer bytes.
+            Compressed information is transmitted in a similar manner to block mode using the header + payload record
+            format.
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h2>Data transfer types</h2>
+        <ul>
+          <li>
+            <b>TYPE A</b>: ASCII, the default format for transferring text files
+          </li>
+          <li>
+            <b>TYPE E</b>: EBCDIC
+          </li>
+          <li>
+            <b>TYPE I</b>: Image, the default format for transferring binary files
+          </li>
+          <li>
+            <b>TYPE N</b>: Nonprintable text files
+          </li>
+          <li>
+            <b>TYPE T</b>: TELNET
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h1>Message Syntax</h1>
+        <p>The FTP payload is encoded with the information required by various FTP messages. These include fields for
+          storing commands that are being sent, the sequence number of the current FTP message (for multi-message data
+          transmission), and the size of the information in the data portion of the message.</p>
+      </div>
+      <div>
+        <img src="https://mavlink.io/assets/packets/ftp_transfer_payload_data_qgc.jpg" width="70%"
+          alt="FTP Message Fromat">
+      </div>
+      <div>
+        <label for="message-format"><i><small>Fig 3. Message Format</small></i></label>
+        <p></p>
+        <p></p>
+      </div>
     </div>
-    <div class="content">
-      <h1>FTP Mechanism</h1>
+
+    <div>
+      <h1>Conclusion</h1>
+      <p>FTP is not built for security. FTP was designed for networks from the 1960s to the 1980s. Computer networks
+        during the period were considered secure. But before you know it, FTP is considered an unsafe protocol because
+        it sends user authentication and file data over the network in plain text. This makes FTP vulnerable to password
+        sniffing, data spoofing, and other network attacks.</p>
+      <p>Nevertheless, FTP is still used because it works simply, is intuitive, and is simple to use. Above all, FTP's
+        biggest advantage is that it can send and receive files at once faster than WWW methods. In the case of WWW,
+        general characters, photos, and video content are easily used, but they are slow to send and receive large
+        amounts of files and are difficult to control files.</p>
     </div>
-  </body>
+
+  </div>
+</body>
+
 </html>
