@@ -54,9 +54,14 @@ label {
 }
 
 footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+
   display: flex;
   justify-content: center;
-  padding: 5px;
-  background-color: #45a1ff;
+  /* padding: 5px; */
+  background-color: #333;
   color: #fff;
 }
