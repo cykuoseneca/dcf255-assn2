@@ -67,7 +67,7 @@
       <div>
         <a href="https://kikobeats.github.io/server-sandbox/assets/ftp-active.png" target="_blank">
           <img src="https://kikobeats.github.io/server-sandbox/assets/ftp-active.png" height="100%" width="40%"
-          alt="FTP Active Mode" title="Click For Original Size"/>
+            alt="FTP Active Mode" title="Click For Original Size" />
         </a>
       </div>
       <div>
@@ -87,7 +87,7 @@
       <div>
         <a href="https://kikobeats.github.io/server-sandbox/assets/ftp-passive.png" target="_blank">
           <img src="https://kikobeats.github.io/server-sandbox/assets/ftp-passive.png" height="100%" width="40%"
-          alt="FTP Passive Mode" title="Click For Original Size"/>
+            alt="FTP Passive Mode" title="Click For Original Size" />
         </a>
       </div>
       <div>
@@ -114,24 +114,26 @@
           response structures similar to other Internet protocols such as HTTP
           and SMTP.
         </p>
-        <p>First, it identifies the default request and response flows and begins to define this protocol. A normal FTP
-          session begins with the client initiating a TCP connection to the FTP server. The FTP server typically
-          identifies the server and sends a connection greeting to the client indicating that the client can continue
-          sending commands. From this point on, the protocol is a series of requests from the client and a response from
-          the server.</p>
+        <p>It defines this protocol by first identifying the default request and response flows. The client opens a TCP
+          connection to the FTP server to start a typical FTP session. The FTP server normally recognizes the server and
+          offers the client a connection greeting letting them know they can keep sending commands. The protocol then
+          consists of a series of requests made by the client and answers given by the server.</p>
     </div>
     <div>
       <h2>File Operation</h2>
-      <p>There are three main types of operations in FTP:</p>
+      <p>FTP operations can be divided into three categories:</p>
       <ul>
-        <li><b>File download from FTP Server to FTP Client</b>: Also known as retrieving a file. Internally, use the
-          <b>RETR</b> command to retrieve the file.
+        <li><b>File download from FTP Server to FTP Client</b>: Also known as obtaining a file, file download from an
+          FTP server to an FTP client. Use the
+          <b>RETR</b> command to retrieve the file internally.
         </li>
-        <li><b>File upload from FTP Client to FTP Server</b>: Also known as File Storage. Internally,
-          <b>STOR</b> commands are used to store files.
+        <li><b>File upload from FTP Client to FTP Server</b>: Also known as file storage is the process of uploading
+          files from an FTP client to an FTP server.
+          <b>STOR</b> commands are employed internally to store files.
         </li>
-        <li><b>Remote Directory Listing</b>: Listing the contents of the remote directory. Internally, the
-          <b>LIST</b> command is used to list the contents of the remote directory.
+        <li><b>Remote Directory Listing</b>: Listing of the contents of a remote directory in a remote directory. The
+          remote directory's contents are listed internally using the
+          <b>LIST</b> command.
         </li>
       </ul>
     </div>
@@ -139,14 +141,18 @@
       <h1>Data Connection</h1>
       <div>
         <h2>File Structure</h2>
-        <p>The FTP STRU command is used to set the file transfer structure. The following is a different file structure:
+        <p>The file transfer structure is specified using the FTP STRU command. A alternate file structure is as
+          follows:
         </p>
         <ul>
           <li>
-            <b>F (FILE structure)</b>: FILE structure is a continuous stream of bytes.
+            <b>F (FILE structure)</b>: A stream of bytes that never ends.
           </li>
           <li>
-            <b>R (RECORD structure)</b>: A file separated by a fixed or variable length record.
+            <b>R (RECORD structure)</b>: A file with records of a fixed or variable length separating the files.
+          </li>
+          <li>
+            <b>P (PAGE structure)</b>: Files are organized by page, with a page number and a page header on each page.
           </li>
         </ul>
       </div>
@@ -155,24 +161,22 @@
         <p>The following are various FTP transfer modes:</p>
         <ul>
           <li>
-            <b>Stream mode</b>: In this mode, the data is sent in a continuous stream of unstructured bytes. The
-            transmitter starts sending data to the recipient over a TCP data connection. Message formats with separate
-            header fields are not used, which is quite different from the way many other protocols send information in
-            discrete chunks. It strongly relies on TCP's data streaming and reliable transport services. Because there
-            is no header structure, the end of the file is displayed when the transfer device closes the data
-            connection.
+            <b>Stream mode</b>: n this mode, data is transmitted as an unbroken stream of bytes. Over a TCP data
+            connection, the transmitter begins transmitting data to the recipient. Contrary to many other protocols,
+            which transfer data in distinct chunks, message formats with independent header fields are not employed. It
+            heavily depends on the dependable transport services and data streaming provided by TCP. The end of the file
+            is displayed when the transfer device cuts off the data connection because there is no header structure.
           </li>
           <li>
-            <b>Block mode</b>: This is a more "traditional" data transfer mode in which data is divided into blocks of
-            data and encapsulated into individual FTP blocks or records. Each record has a three-byte header that
-            represents the length and contains information about the data blocks being sent. Special algorithms are used
-            to track transmitted data, detect interrupted transmissions, and restart them.
+            <b>Block mode</b>: This more "conventional" data transfer option divides data into blocks and encapsulates
+            each block or record into an independent FTP block. The length of each record is indicated via a three-byte
+            header that also includes details about the data blocks being transmitted. Data transmissions are tracked,
+            detected, and restarted using specialized algorithms.
           </li>
           <li>
-            <b>Compression mode</b>: Transmission mode uses a relatively simple compression technique called run-length
-            encoding to detect repeated patterns of transmitted data so that the entire message occupies fewer bytes.
-            Compressed information is transmitted in a similar manner to block mode using the header + payload record
-            format.
+            <b>Compression mode</b>: Transmission mode employs a relatively straightforward compression method called
+            run-length encoding to identify recurring transmission patterns and reduce the overall message's byte count.
+            Similar to block mode, compressed data is delivered using a header + payload record structure.
           </li>
         </ul>
       </div>
@@ -198,9 +202,10 @@
       </div>
       <div>
         <h1>Message Syntax</h1>
-        <p>The FTP payload is encoded with the information required by various FTP messages. These include fields for
-          storing commands that are being sent, the sequence number of the current FTP message (for multi-message data
-          transmission), and the size of the information in the data portion of the message.</p>
+        <p>The data needed by various FTP messages is encoded in the FTP payload. For multi-message data transmission,
+          these contain fields for recording commands that are being transmitted, the sequence number of the current FTP
+          message, and the amount of data in the message's data section.
+        </p>
       </div>
       <div>
         <img src="https://mavlink.io/assets/packets/ftp_transfer_payload_data_qgc.jpg" width="70%"
